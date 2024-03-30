@@ -806,7 +806,7 @@ function loadQuestion() {
         propertyCard.innerHTML = `
           <h3>${property.propertyName}</h3>
           <img src="/uploads/${property.propertyImage}" alt="Property Image" style="max-width: 100%">
-          <p>Price: ${property.propertyPrice}</p>
+          <p>Price: $${property.propertyPrice}</p>
           <p>Location: ${property.propertyLocation}</p>
           <p>PhoneNo: ${property.phoneNo}</p>
           <button onclick="deleteProperty(${property.id})">Delete</button>
