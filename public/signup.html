@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to right, #3498db, #2c3e50);
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      width: 400px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .toggle-btn {
+      display: flex;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .toggle-btn button {
+      flex: 1;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      background-color: #2c3e50;
+      color: #fff;
+    }
+
+    .toggle-btn button.active {
+      background-color: #3498db;
+    }
+
+    .login-form,
+    .signup-form {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .login-form.active,
+    .signup-form.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #2980b9;
+    }
+
+    .form-group a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #3498db;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .form-group a:hover {
+      color: #2980b9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="toggle-btn">
+      <button onclick="toggleForm('login', event)" class="active">Login</button>
+      <button onclick="toggleForm('signup', event)">Signup</button>
+    </div>
+
+    <form class="login-form active" action="/submit/login" method="post">
+      <div class="form-group">
+        <label for="loginUsername">Username:</label>
+        <input type="text" name="username" id="loginUsername" placeholder="Enter your username" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password:</label>
+        <input type="password" name="password" id="loginPassword" placeholder="Enter your password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+      <div class="form-group">
+        <a href="#">Forgot Password?</a>
+      </div>
+    </form>
+
+    <form class="signup-form" action="/submit/signup" method="post">
+      <div class="form-group">
+        <label for="signupUsername">Username:</label>
+        <input type="text" name="username" id="signupUsername" placeholder="Choose a username" required>
+      </div>
+      <div class="form-group">
+        <label for="signupPassword">Password:</label>
+        <input type="password" name="password" id="signupPassword" placeholder="Choose a password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Signup</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm(formType, event) {
+      event.preventDefault();
+      const loginForm = document.querySelector('.login-form');
+      const signupForm = document.querySelector('.signup-form');
+      const loginBtn = document.querySelector('.toggle-btn button:nth-child(1)');
+      const signupBtn = document.querySelector('.toggle-btn button:nth-child(2)');
+
+      if (formType === 'login') {
+        loginForm.classList.add('active');
+        signupForm.classList.remove('active');
+        loginBtn.classList.add('active');
+        signupBtn.classList.remove('active');
+      } else if (formType === 'signup') {
+        loginForm.classList.remove('active');
+        signupForm.classList.add('active');
+        loginBtn.classList.remove('active');
+        signupBtn.classList.add('active');
+      }
+    }
+    
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      /* display: flex;
+      
+      align-items: center;
+      justify-content: center; */
+      height: 100vh;
+      list-style: none;
+    }
+
+    #propertyDashboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+      justify-content: center;
+      margin-left: 370px;
+      transition: transform 0.3s ease-in-out;
+      color: black;
+    }
+
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      height: 550px;
+      margin-top: 30px;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input[type="file"] {
+      position: relative;
+      overflow: hidden;
+      background-color: #6784ec;
+      color: white;
+      cursor: pointer;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    input[type="file"]:hover {
+      background-color: #56b2e0;
+    }
+
+
+    input {
+      padding: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #517dbb;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      width: 50%;
+      margin-left: 90px;
+    }
+
+    button:hover {
+      background-color: #559fd8;
+      transform: scale(1.05);
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+
+    #yourProperties {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 100px;
+      justify-content: center;
+    }
+
+    .property-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 350px;
+      height: 400px;
+      display: inline-block;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Adjust the blur intensity as needed */
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      
+    }
+
+    .sidebar a:hover {
+      color: #242222;
+      transform:scale(1.1);
+
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+    }
+
+    .sbar {
+      left: 0%;
+      margin-right: 990px;
+      color: white;
+
+    }
+
+    .sbar:hover {
+      color: white;
+      transform: scale(1.3);
+
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <ul>
+        <div class="sbar">
+          <!-- ... (your existing nav links) -->
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        </div>
+      </ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="signup.html">Signup/Login</a></li>
+      <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Website</title>
+  <style>
+   
+
+    #chatButton {
+      background-color: #05bce6;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 24px;
+      margin: 2px 2px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s ease-in-out;
+      width: 90px;
+      height: 90px;
+      margin-left: 130px;
+      
+    }
+
+    #chatButton:hover {
+      background-color: #c0dde0;
+    }
+
+    #chatContainer {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      overflow: auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #chatContainer.active {
+      display: block; 
+    }
+
+    #chatHeader {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    #chatMessages {
+      padding: 10px;
+    }
+
+    #userInput {
+      width: calc(100% - 40px);
+      padding: 8px;
+      margin: 0 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #sendMessageButton {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 10px auto;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    #sendMessageButton:hover {
+      background-color: #45a049;
+    }
+
+      #suggestionbutton{
+
+        background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 10px auto;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease-in-out;
+      }
+    
+      #suggestionbutton:hover {
+      background-color: #61adeb;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+
+  </div>
+
+  <button id="chatButton" onclick="toggleChat()">🤖</button>
+
+  <div id="chatContainer">
+    <div id="chatHeader"></div>
+    <div id="chatMessages"></div>
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button id="sendMessageButton" onclick="sendMessage()">Send</button>
+    <button id="suggestionbutton" onclick="suggestContent()">Any suggestions buddy?</button>
+  </div>
+
+  <script>
+    let chatContainer = document.getElementById('chatContainer');
+    let chatButton = document.getElementById('chatButton');
+    let userInput = document.getElementById('userInput');
+
+    function toggleChat() {
+      chatContainer.classList.toggle('active');
+    }
+
+    function sendMessage() {
+      let userMessage = userInput.value;
+      if (userMessage.trim() !== '') {
+        appendMessage('You', userMessage);
+        let aiResponse = generateAiResponse(userMessage);
+        appendMessage('AI', aiResponse);
+        userInput.value = ''; 
+      }
+    }
+
+    function appendMessage(sender, message) {
+      let messageElement = document.createElement('div');
+      messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+      document.getElementById('chatMessages').appendChild(messageElement);
+      chatContainer.scrollTop = chatContainer.scrollHeight; 
+    }
+
+    function suggestContent() {
+      appendMessage('AI', 'Here are some suggestions:');
+      appendMessage('AI', '1) For Selling:');
+      appendMessage('AI', '   a) Sign up by choosing a username and password');
+      appendMessage('AI', '   b) Log in using the same username and password');
+      appendMessage('AI', '   c) You will get directed to your dashboard');
+      appendMessage('AI', '   d) Upload properties you want to sell');
+
+      appendMessage('AI', '2) For Buying:');
+      appendMessage('AI', '   a) After signing up and logging in, go to the home page');
+      appendMessage('AI', '   b) Select the property you like');
+      appendMessage('AI', '   c) Click on that property, and a popup will appear with property image, owner contact info, and price');
+    }
+
+    function generateAiResponse(userMessage) {
+      if (userMessage.toLowerCase().includes('hello')) {
+        return 'Hello! How can I help you?';
+      } else if (userMessage.toLowerCase().includes('how are you')) {
+        return 'I am a virtual assistant, so I don\'t have feelings, but thanks for asking!';
+      } else if (userMessage.toLowerCase().includes('suggestions')) {
+        suggestContent();
+      } else if (userMessage.toLowerCase().includes('hi')) {
+        return 'Hello! How can I help you?';
+    }
+    else if (userMessage.toLowerCase().includes('what is your name')) {
+        return 'my name is vertexa';}
+        else if (userMessage.toLowerCase().includes('any suggestions')) {
+        suggestContent();}
+        else if (userMessage.toLowerCase().includes('what is my name')) {
+        return 'you never told me but i will call you boss';}
+        else if (userMessage.toLowerCase().includes('who is ashutosh')) {
+        return 'bhaiya ji ko kaun nahi janta';}
+        else{
+          return'i didnt get it ask again';
+        }
+
+  }
+  </script>
+</body>
+
+</html>
+
+<h2 style="margin-top: 50px; margin-left:40px;">Take a quiz on real estate</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   
+
+    #quiz-container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      display: none; 
+      overflow: hidden;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .option {
+      margin-bottom: 10px;
+      font-size: 18px;
+      padding: 10px 20px;
+      border: 2px solid #4CAF50;
+      background-color: #fff;
+      color: #4CAF50;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .option:hover {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    #progress-container {
+      margin-top: 20px;
+      height: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      width: 0;
+      height: 100%;
+      background-color: #4CAF50;
+      transition: width 0.5s;
+    }
+
+    #start-button {
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-left: 80px;
+      margin-top:30px;
+    }
+
+    #start-button:hover {
+      background-color: #45a049;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+  </style>
+  <title>Real Estate Quiz</title>
+</head>
+<body>
+
+<div id="quiz-container">
+  <div id="question-container" class="question"></div>
+  <div id="options-container" class="options"></div>
+
+  <div id="result"></div>
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+</div>
+<button id="start-button" onclick="startQuiz()">Start Quiz</button>
+
+<script>
+  const questions = [
+    {
+      question: 'What is the average return on investment for real estate?',
+      options: ['5%', '8%', '10%', '15%'],
+      correctAnswer: '8%'
+    },
+    {
+      question: 'Which type of real estate investment provides regular income?',
+      options: ['Residential property', 'Commercial property', 'Vacant land', 'Industrial property'],
+      correctAnswer: 'Commercial property'
+    },
+    {
+      question: 'What does ROI stand for in real estate?',
+      options: ['Return on Investment', 'Rate of Income', 'Real Estate Opportunity', 'Return of Interest'],
+      correctAnswer: 'Return on Investment'
+    },
+    {
+      question: 'Which factor does NOT typically influence real estate property value?',
+      options: ['Location', 'Square footage', 'Neighborhood schools', 'Recent stock market performance'],
+      correctAnswer: 'Recent stock market performance'
+    },
+    {
+      question: 'What is a "fixer-upper" in real estate?',
+      options: ['A property in good condition', 'A property needing repairs or renovations', 'An investment property', 'A luxury property'],
+      correctAnswer: 'A property needing repairs or renovations'
+    },
+    {
+      question: 'What is a down payment in real estate?',
+      options: ['The final payment when closing the deal', 'An initial payment made when securing a mortgage', 'Monthly payment for mortgage', 'A payment for property insurance'],
+      correctAnswer: 'An initial payment made when securing a mortgage'
+    },
+    {
+      question: 'What is a foreclosure in real estate?',
+      options: ['The process of selling a property', 'A property seized by the government', 'A property reclaimed by the bank', 'An auction of luxury homes'],
+      correctAnswer: 'A property reclaimed by the bank'
+    },
+    {
+      question: 'What is the 1% rule in real estate investing?',
+      options: ['Invest 1% of the property value', 'Monthly rent should be at least 1% of the property value', '1% discount on property purchase', '1% cashback on mortgage payments'],
+      correctAnswer: 'Monthly rent should be at least 1% of the property value'
+    },
+    {
+      question: 'What is a real estate agent?',
+      options: ['A property appraiser', 'A person who buys real estate', 'A licensed professional representing buyers or sellers', 'A property manager'],
+      correctAnswer: 'A licensed professional representing buyers or sellers'
+    },
+    {
+      question: 'What is the purpose of a home inspection in real estate?',
+      options: ['To set the property price', 'To check if the home is haunted', 'To identify potential issues or repairs needed', 'To obtain a mortgage'],
+      correctAnswer: 'To identify potential issues or repairs needed'
+    }
+    // Add more questions here...
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+  let timer;
+
+  function startQuiz() {
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('start-button').style.display = 'none';
+    loadQuestion();
+    startTimer();
+  }
+
+function loadQuestion() {
+  const quizContainer = document.getElementById('quiz-container');
+  const questionContainer = document.getElementById('question-container');
+  const optionsContainer = document.getElementById('options-container');
+  const resultContainer = document.getElementById('result');
+
+  questionContainer.textContent = '';
+  const currentQuiz = questions[currentQuestion];
+
+  questionContainer.textContent = currentQuiz.question;
+  optionsContainer.textContent = '';
+
+  currentQuiz.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.className = 'option';
+    button.onclick = () => checkAnswer(index);
+    optionsContainer.appendChild(button);
+  });
+
+  resultContainer.textContent = '';
+  updateProgressBar();
+}
+
+
+  function startTimer() {
+    timer = setTimeout(() => {
+      nextQuestion();
+    }, 15000); // 15 seconds per question, adjust as needed
+  }
+
+  function stopTimer() {
+    clearTimeout(timer);
+  }
+
+  function checkAnswer(selectedIndex) {
+    stopTimer();
+    const currentQuiz = questions[currentQuestion];
+    if (currentQuiz.correctAnswer === currentQuiz.options[selectedIndex]) {
+      score += 10;
+    }
+
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      loadQuestion();
+      startTimer();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    stopTimer();
+    const resultContainer = document.getElementById('result');
+    resultContainer.textContent = `Congratulations! You scored ${score} points.`;
+
+    if (score === 100) {
+      resultContainer.textContent += " What a genius!";
+    } else if (score >= 50) {
+      resultContainer.textContent += " Nice try!";
+    } else {
+      resultContainer.textContent += " Improve your knowledge.";
+    }
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      loadQuestion();
+      startTimer();
+    } else {
+      showResult();
+    }
+  }
+
+  function updateProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = progress + '%';
+  }
+</script>
+
+</body>
+</html>
+
+
+
+  </div>
+  <h3 style="color: black; margin-top: 30px; margin-left:20px ;">Your DASHBOARD</h3>
+
+  <div id="propertyDashboard">
+    <h2 style="color: rgb(116, 116, 239);">UPLOAD YOUR PROPERTIES</h2>
+    <form id="propertyForm">
+      <!-- <h2>UPLOAD YOUR PROPERTIES</h2> -->
+      <label for="propertyName">Property Name:</label>
+      <input type="text" id="propertyName" required>
+
+      <label for="propertyImage">Property Image:</label>
+      <input type="file" id="propertyImage" accept="image/*" required>
+
+      <label for="propertyPrice">Property Price:</label>
+      <input type="number" id="propertyPrice" required>
+
+      <label for="propertyLocation">Property Location:</label>
+      <input type="text" id="propertyLocation" required>
+
+      <label for="ownerEmail">Owner's Email:</label>
+      <input type="email" id="ownerEmail" required>
+
+      <label for="phoneNo">phone number:</label>
+      <input type="number" id="phoneNo" required>
+
+
+      <button type="button" onclick="addProperty()">Add Property</button>
+    </form>
+  </div>
+  <h2 id="yourPropertiesTitle">Your Properties</h2>
+  <div id="yourProperties">
+
+    <!-- Display uploaded properties here -->
+  </div>
+  <footer>
+    <div class="footer">
+      <div class="footer-left">
+
+        <h3>ICONIC RE<span>real estates</span></h3>
+
+        <p class="footer-links">
+          <a href="index.html" class="link-1">Home</a>
+
+          <a href="signup.html">login/signup</a>
+
+          <a href="dashboard.html">Dashboard</a>
+
+          <a href="about.html">About</a>
+
+          <a href="contact.html">Contact</a>
+        </p>
+
+        <p class="footer-company-name">ICONIC RE © 2015</p>
+      </div>
+
+      <div class="footer-center">
+
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>Maharashtra</span>india</p>
+        </div>
+
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+91 9678054483</p>
+        </div>
+
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:sohamlkhanvilkar@gmail.com">support@company.com</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-right">
+
+        <p class="footer-company-about">
+          <span>About the company</span>
+          Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus
+          vehicula sit amet.
+        </p>
+
+        <div class="footer-icons">
+
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-github"></i></a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    async function addProperty() {
+      const propertyName = document.getElementById('propertyName').value;
+      const ownerEmail = document.getElementById('ownerEmail').value;
+      const propertyImageInput = document.getElementById('propertyImage');
+      const propertyPrice = document.getElementById('propertyPrice').value;
+      const propertyLocation = document.getElementById('propertyLocation').value;
+      const phoneNo = document.getElementById('phoneNo').value;
+
+
+      const formData = new FormData();
+      formData.append('propertyName', propertyName);
+      formData.append('propertyImage', propertyImageInput.files[0]);
+      formData.append('propertyPrice', propertyPrice);
+      formData.append('propertyLocation', propertyLocation);
+      formData.append('ownerEmail', ownerEmail); // new line
+      formData.append('phoneNo', phoneNo);
+
+      try {
+        await fetch('/api/addProperty', {
+          method: 'POST',
+          body: formData,
+        });
+
+        // Clear form fields after successful upload
+        document.getElementById('propertyName').value = '';
+        document.getElementById('propertyImage').value = '';
+        document.getElementById('propertyPrice').value = '';
+        document.getElementById('propertyLocation').value = '';
+        document.getElementById('ownerEmail').value = ''; // new line
+        document.getElementById('phoneNo').value = '';
+        // Fetch and display properties including the newly added one
+        await fetchAndDisplayProperties();
+      } catch (error) {
+        console.error('Error adding property:', error);
+      }
+    }
+
+    async function fetchAndDisplayProperties() {
+  try {
+    const response = await fetch('/api/getPropertiesByOwner');
+    const properties = await response.json();
+
+    const yourPropertiesContainer = document.getElementById('yourProperties');
+    const yourPropertiesTitle = document.getElementById('yourPropertiesTitle');
+
+    // Check if there are properties to display
+    if (properties.length > 0) {
+      yourPropertiesTitle.style.display = 'block'; // Show the "Your Properties" text
+      yourPropertiesContainer.innerHTML = ''; // Clear previous properties
+
+      properties.forEach(property => {
+        const propertyCard = document.createElement('div');
+        propertyCard.className = 'property-card';
+        propertyCard.innerHTML = `
+          <h3>${property.propertyName}</h3>
+          <img src="/uploads/${property.propertyImage}" alt="Property Image" style="max-width: 100%">
+          <p>Price: ${property.propertyPrice}</p>
+          <p>Location: ${property.propertyLocation}</p>
+          <p>PhoneNo: ${property.phoneNo}</p>
+          <button onclick="deleteProperty(${property.id})">Delete</button>
+        `;
+
+        yourPropertiesContainer.appendChild(propertyCard);
+      });
+    } else {
+      yourPropertiesTitle.style.display = 'none'; // Hide the "Your Properties" text
+      yourPropertiesContainer.innerHTML = ''; // Clear previous properties
+    }
+  } catch (error) {
+    console.error('Error fetching properties:', error);
+  }
+}
+
+
+    async function deleteProperty(propertyId) {
+      try {
+        await fetch(`/api/deleteProperty/${propertyId}`, {
+          method: 'DELETE',
+        });
+
+        // Notify index.html to refresh properties after deletion
+        window.dispatchEvent(new Event('propertyDeleted'));
+
+        // Fetch and display properties after successful deletion
+        await fetchAndDisplayProperties();
+      } catch (error) {
+        console.error('Error deleting property:', error);
+      }
+    }
+
+    window.onload = function () {
+      fetchAndDisplayProperties();
+
+      // Add event listener to refresh properties after deletion
+      window.addEventListener('propertyDeleted', fetchAndDisplayProperties);
+    };
+
+    // sidebar script
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "350px";
+      document.getElementById("main").style.marginLeft = "350px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+</body>
+
+</html>

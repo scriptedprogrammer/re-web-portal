@@ -1,0 +1,308 @@
+<!-- public/contact.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /* background: linear-gradient(to right, #3498db, #2c3e50); */
+            opacity: 1;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+            font-size: 50px;
+        }
+
+        h2{
+
+                margin-top: 100px;
+                color: #333;
+                font-size: 50px;
+                margin-left: 320px;
+        }
+
+        
+
+        form {
+            max-width: 700px;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            ;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(28, 109, 223, 0.6);
+            margin-left: 220px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            height: 440px;
+            min-width: 400px;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            min-height: 140px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 120px;
+            width: 40%;
+        }
+
+        button:hover {
+            background-color: #559fd8;
+            transform: scale(1.05);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* Add some animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        form {
+            animation: fadeIn 1s ease;
+        }
+        .Msocial{
+
+            align-items: center;
+            justify-content: space-evenly;
+            display: flex;
+            margin-bottom: 50px;
+            margin-top: 80px;
+            /* border: 5px solid black;
+            border-radius: 10px;
+            padding: 60px; */
+
+        }
+        .social{
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            height: 200px;
+            width:200px;
+            display: flex;
+            font-size: 34px;
+            color: white;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 110px;
+            flex-direction: row;
+
+        }
+
+        
+
+        .social a{
+            color: white;
+        }
+
+        .social a:hover{
+
+            transform: scale(1.07);
+        }
+
+            .formd{
+                display: flex;
+            }
+
+            .service{
+                font-size: 20px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: 500;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 50px;
+                margin-right: 30px;
+                flex-wrap: wrap;
+                text-align: justify;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            ::-webkit-scrollbar{
+                width: 0%;
+            }
+    </style>
+</head>
+
+<div>
+    <nav>
+        <div class="navbar">
+            <div class="typewriter">
+                <h1>ICONIC RE real estates</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="signup.html">Signup/Login</a></li>
+                <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<body>
+    
+    <h1>Contact Us</h1>
+    <div class="Msocial">
+       
+       <div class="social"> <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+    <p>facebook</p></div>
+       <div class="social"> <a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+    <p>twitter</p></div>
+        <div class="social"><a href="https://www.linkdin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <p>linkdin</p></div>
+        <div class="social"><a href="https://github.com/scriptedprogrammer/scriptedprogrammer"><i class="fa-brands fa-github"></i></a>
+        <p>github</p></div>
+
+    </div>
+    <h2> Mail us </h2>
+    <div class="formd">
+        <div>
+    <form action="/submit_form" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Send</button>
+    </form>
+</div>
+    <div class="service">   FEEL FREE TO CONTACT US AT ANYTIME, ALWAYS IN YOUR SERVICE . </div>
+    </div>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer-left">
+
+                <h3>ICONIC RE<span>real estates</span></h3>
+
+                <p class="footer-links">
+                    <a href="index.html" class="link-1">Home</a>
+
+                    <a href="signup.html">login/signup</a>
+
+                    <a href="dashboard.html">Dashboard</a>
+
+                    <a href="about.html">About</a>
+
+                    <a href="contact.html">Contact</a>
+                </p>
+
+                <p class="footer-company-name">ICONIC RE © 2015</p>
+            </div>
+
+            <div class="footer-center">
+
+                <div>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p><span>Maharashtra</span>india</p>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <p>+91 9678054483</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:sohamlkhanvilkar@gmail.com">support@company.com</a></p>
+                </div>
+
+            </div>
+
+            <div class="footer-right">
+
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor
+                    lacus vehicula sit amet.
+                </p>
+
+                <div class="footer-icons">
+
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+    <script>fetch('/check-login')
+        .then(response => {
+            if (response.status === 200) {
+                // User is logged in, show the dashboard link
+                const dashboardLink = document.getElementById('dashboardLink');
+                dashboardLink.style.display = 'block';
+            } else if (response.status === 401) {
+                // User is not logged in, hide the dashboard link
+                const dashboardLink = document.getElementById('dashboardLink');
+                dashboardLink.style.display = 'none';
+            }
+        })</script>
+</body>
+
+</html>
